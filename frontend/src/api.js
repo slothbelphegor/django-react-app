@@ -5,11 +5,12 @@ Axios interceptor: automatically add the token to the request headers
 import axios from "axios";
 import { ACCESS_TOKEN } from "./constants";
 
+const apiUrl = "/choreo-apis/django-react-app/backend/v1"
 
 const api = axios.create({
     // Import anything specified in the .env file
     // In this case it is the base URL of the app
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl
 });
 
 api.interceptors.request.use(
